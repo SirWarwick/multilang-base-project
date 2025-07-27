@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  go-api:
+    build: ../backend/go-api
+    ports:
+      - "8080:8080"
+
+  python-service:
+    build: ../backend/python-service
+    ports:
+      - "5000:5000"
+
+  react-app:
+    build: ../frontend/react-app
+    ports:
+      - "3000:3000"
