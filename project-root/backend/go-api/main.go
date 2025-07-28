@@ -6,10 +6,11 @@ import (
 )
 
 func hello(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello from Go API!")
+    fmt.Fprintf(w, "Hello from Go API with Mongo!")
 }
 
 func main() {
+    InitMongoDB()
     http.HandleFunc("/api/hello", hello)
     http.ListenAndServe(":8080", nil)
 }

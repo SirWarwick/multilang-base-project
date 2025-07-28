@@ -5,13 +5,27 @@ services:
     build: ../backend/go-api
     ports:
       - "8080:8080"
+    depends_on:
+      - mongo
 
   python-service:
     build: ../backend/python-service
     ports:
       - "5000:5000"
+    depends_on:
+      - mongo
 
   react-app:
     build: ../frontend/react-app
     ports:
       - "3000:3000"
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
